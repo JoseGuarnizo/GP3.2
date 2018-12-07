@@ -327,25 +327,7 @@ $(document).ready(function ($) {
     $(this).parallax("30%", 0.2);
   });
   
-  $('.tlt').textillate({
-    loop: true,
-    in: {
-      effect: 'fadeInUp',
-      delayScale: 2,
-      delay: 50,
-      sync: false,
-      shuffle: false,
-      reverse: true,
-    },
-    out: {
-      effect: 'fadeOutUp',
-      delayScale: 2,
-      delay: 50,
-      sync: false,
-      shuffle: false,
-      reverse: true,
-    },
-  });
+  
  
 });
 

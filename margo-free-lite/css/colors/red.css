@@ -1,3 +1,6 @@
+body{
+	font-family: 'Montserrat', sans-serif;
+}
 a {
     color: #ee3733;
 }
@@ -44,13 +47,16 @@ a.main-button, input[type="submit"] {
 .slicknav_nav .active {
   color: #ee3733;
 }
-.navbar-default .navbar-nav > li:hover > a,
 .navbar-default .navbar-nav > li > a.active {
-	color: #ee3733;
+	color: yellow;/*color de letra menu activo*/
+}
+
+.navbar-default .navbar-nav > li:hover > a{
+	color: yellow;
 }
 
 .dropdown > li:hover > a, .sup-dropdown li:hover > a {
-	color: #ee3733;
+	color: yellow;
 }
 
 .navbar-default .navbar-nav > li > a:after {
@@ -58,7 +64,7 @@ a.main-button, input[type="submit"] {
 }
 
 .navbar-default .navbar-nav > li > a.active, .navbar-default .navbar-nav > li:hover > a {
-	border-color: #ee3733;
+	border-color: yellow;/*color seleccion activo*/
 }
 
 .dropdown  li a.active, .sup-dropdown li a.active {
@@ -253,8 +259,14 @@ ul.icons-list li i {
 }
 
 .classic-title span {
-	border-bottom-color: #ee3733;
+	border-bottom-color: yellow;
+	color:#003f72!important;
 }
+.classic-title2 span {
+	border-bottom-color: yellow;
+	color:#003f72!important;
+}
+
 
 .portfolio-filter li a:hover {
 	color: #ee3733;

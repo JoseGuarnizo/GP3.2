@@ -1,12 +1,12 @@
 <!doctype html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><html lang="en" class="no-js"> <![endif]-->
-<html lang="en">
+<html lang="es">
 
 <head>
 
   <!-- Basic -->
-  <title>Margo | Services</title>
+  <title>Consys | Servicios</title>
 
   <!-- Define Charset -->
   <meta charset="utf-8">
@@ -59,14 +59,53 @@
   <script type="text/javascript" src="js/skrollr.js"></script>
   <script type="text/javascript" src="js/jquery.parallax.js"></script>
   <script type="text/javascript" src="js/mediaelement-and-player.js"></script>
-  <script type="text/javascript" src="js/jquery.slicknav.js"></script>    
+  <script type="text/javascript" src="js/jquery.slicknav.js"></script>   
+<script type="text/javascript" src='https://www.google.com/jsapi'></script>
+<script type="text/javascript">
+
+
+              google.load('visualization', '1', {'packages': ['controls', 'corechart']});
+                                var dataSource = "https://docs.google.com/spreadsheets/d/1SQCAxBGfCM2Eed_VQ3jetTiBNeSrPb20XJ1-a8VjNTI/edit#gid=0";
+           function getDataGad() {
+                           var query = new google.visualization.Query(dataSource);
+                            var sentencia = "SELECT A,B,C,D ";
+
+                                    query.setQuery(sentencia);
+                                    query.send(function (response) {
+                                        if (response.isError()) {
+                                            alert("Error consultando el archivo: " + response.getMessage());
+                                            return;
+                                        }
+
+                                        var datos = response.getDataTable();
+                                        var p = '';
+                                        console.log(datos);
+                                        var result = "<table id='tabla_servicios'>";
+
+
+                                       result += "<tr>";
+                                        for (var j = 0; j < datos.Mf.length; j++) {
+                                            
+
+                                               // p += '<tr> <p>  <th WIDTH= 183><b>' + datos.Mf[k].label + ':</b></th>  <td>' + datos.Nf[j].c[k] + '</td></p> </tr>';
+                                                 
+                                            result+='<th>  '+datos.Mf[j].label+'  </th>';
+                                            
+                                            console.log(datos.Mf[j].label); 
+
+
+                                        }result += "</tr>";
+                                        $(result).appendTo('#results');
+                                    });
+                                }
+        </script>
  
   <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
 </head>
 
-<body>
+<body onload="getDataGad();">
 
   <!-- Container -->
   <div id="container">
@@ -141,7 +180,9 @@
               <i class="fa fa-bars"></i>
             </button>
             <!-- End Toggle Nav Link For Mobiles -->
-            <a class="navbar-brand" href="index.html"><img alt="" src="images/margo.png"></a>
+            <a class="navbar-brand" href="index.html">
+              <img alt="" src="https://investigacion.utpl.edu.ec/grupos/sites/all/themes/utpl/logo.png">
+            </a>
           </div>
           <div class="navbar-collapse collapse">
             <!-- Stat Search -->
@@ -149,7 +190,7 @@
               <a class="show-search"><i class="fa fa-search"></i></a>
               <div class="search-form">
                 <form autocomplete="off" role="search" method="get" class="searchform" action="#">
-                  <input type="text" value="" name="s" id="s" placeholder="Search the site...">
+                  <input type="text" value="" name="s" id="s" placeholder="Busca aquí...">
                 </form>
               </div>
             </div>
@@ -157,70 +198,58 @@
             <!-- Start Navigation List -->
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <a href="index.html">Home</a>
+                <a href="index.html">Inicio</a>
+              </li>
+              <li>
+                <a href="about.html">Sobre Nosotros</a>
                 <ul class="dropdown">
-                  <li><a href="index-01.html">Home Version 1</a>
+                  <li><a href="about.html">Descripción del Grupo</a>
                   </li>
-                  <li><a href="index-02.html">Home Version 2</a>
+                  <li><a href="#">Integrantes del grupo</a>
                   </li>
-                  <li><a href="index-03.html">Home Version 3</a>
+                  <li><a href="right-sidebar.html">Premios y Reconocimientos</a>
                   </li>
-                  <li><a href="index-04.html">Home Version 4</a>
-                  </li>
-                  <li><a href="index-05.html">Home Version 5</a>
-                  </li>
-                  <li><a href="index-06.html">Home Version 6</a>
-                  </li>
-                  <li><a href="index-07.html">Home Version 7</a>
-                  </li>
-                  <li><a href="index-08.html">HSome Version 8</a>
-                  </li>
-                  <li><a href="index-09.html">Home Version 9</a>
+                  <li><a href="left-sidebar.html">Alianzas Estratégicas</a>
                   </li>
                 </ul>
               </li>
               <li>
-                <a class="active" href="about.html">Pages</a>
+                <a href="#">Investigación</a>
                 <ul class="dropdown">
-                  <li><a href="about.html">About</a></li>
-                  <li><a class="active" href="services.html">Services</a></li>
-                  <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                  <li><a href="left-sidebar.html">Left Sidebar</a></li>
-                  <li><a href="404.html">404 Page</a></li>
+                  <li><a href="tabs.html">Proyectos de Investigación</a>
+                  </li>
+                  <li><a href="publicaciones_cientificas.html">Publicaciones Cientificas</a>
+                  </li>
+                  <li><a href="patentes.html">Patentes</a>
+                  </li>
+                  <li><a href="action-box.html">Charlas Científicas</a>
+                  </li>
                 </ul>
               </li>
               <li>
-                <a href="#">Shortcodes</a>
+                <a href="#">Docencia</a>
                 <ul class="dropdown">
-                  <li><a href="tabs.html">Tabs</a></li>
-                  <li><a href="buttons.html">Buttons</a></li>
-                  <li><a href="forms.html">Forms</a></li>
-                  <li><a href="action-box.html">Action Box</a></li>
-                  <li><a href="testimonials.html">Testimonials</a></li>
-                  <li><a href="latest-posts.html">Latest Posts</a></li>
-                  <li><a href="latest-projects.html">Latest Projects</a></li>
-                  <li><a href="pricing.html">Pricing Tables</a></li>
-                  <li><a href="accordion-toggles.html">Accordion & Toggles</a></li>
+                  <li><a href="docencia_asig.html">Asignaturas Impartidas</a>
+                  </li>
+                  <li><a href="pregrado_post.html">Proyecto de Grado y Posgrado</a>
+                  </li>
+                  <li><a href="#">Laboratorio de Electrónica y Robótica</a>
+                  </li>
+                  <li><a href="#">Charlas Académicas</a>
+                  </li>
                 </ul>
               </li>
               <li>
-                <a href="portfolio-3.html">Portfolio</a>
+                <a class="active" href="#">Servicios</a>
                 <ul class="dropdown">
-                  <li><a href="portfolio-2.html">2 Columns</a></li>
-                  <li><a href="portfolio-3.html">3 Columns</a></li>
-                  <li><a href="portfolio-4.html">4 Columns</a></li>
-                  <li><a href="single-project.html">Single Project</a></li>
+                  <li><a href="services.html">Servicios</a>
+                  </li>
+                  <li><a href="blog-left-sidebar.html">Colaboraciones</a>
+                  </li>
                 </ul>
               </li>
-              <li>
-                <a href="blog.html">Blog</a>
-                <ul class="dropdown">
-                  <li><a href="blog.html">Blog - right Sidebar</a></li>
-                  <li><a href="blog-left-sidebar.html">Blog - Left Sidebar</a></li>
-                  <li><a href="single-post.html">Blog Single Post</a></li>
-                </ul>
+              <li><a href="contact.html">Contacto</a>
               </li>
-              <li><a href="contact.html">Contact</a></li>
             </ul>
             <!-- End Navigation List -->
           </div>
@@ -229,95 +258,63 @@
         <!-- Mobile Menu Start -->
         <ul class="wpb-mobile-menu">
           <li>
-            <a href="index.html">Home</a>
+            <a  href="index.html">Inicio</a>
+          </li>
+          <li>
+            <a href="about.html">Sobre Nosotros</a>
             <ul class="dropdown">
-              <li><a href="index-01.html">Home Version 1</a>
+              <li><a href="about.html">Descripción del Grupo</a>
               </li>
-              <li><a href="index-02.html">Home Version 2</a>
+              <li><a href="services.html">Integrantes del Grupo</a>
               </li>
-              <li><a href="index-03.html">Home Version 3</a>
+              <li><a href="right-sidebar.html">Premios y Reconocimientos</a>
               </li>
-              <li><a href="index-04.html">Home Version 4</a>
-              </li>
-              <li><a href="index-05.html">Home Version 5</a>
-              </li>
-              <li><a href="index-06.html">Home Version 6</a>
-              </li>
-              <li><a href="index-07.html">Home Version 7</a>
-              </li>
-              <li><a href="index-08.html">HSome Version 8</a>
-              </li>
-              <li><a href="index-09.html">Home Version 9</a>
+              <li><a href="left-sidebar.html">Alianzas Estratégicas</a>
               </li>
             </ul>
           </li>
           <li>
-            <a class="active" href="about.html">Pages</a>
+            <a href="#">Investigación</a>
             <ul class="dropdown">
-              <li><a href="about.html">About</a>
+              <li><a href="tabs.html">Proyectos de Investigación</a>
               </li>
-              <li><a class="active" href="services.html">Services</a>
+              <li><a href="buttons.html">Publicaciones Científicas</a>
               </li>
-              <li><a href="right-sidebar.html">Right Sidebar</a>
+              <li><a href="patentes.html">Patentes</a>
               </li>
-              <li><a href="left-sidebar.html">Left Sidebar</a>
-              </li>
-              <li><a href="404.html">404 Page</a>
+              <li><a href="action-box.html">Charlas Científicas</a>
               </li>
             </ul>
           </li>
           <li>
-            <a href="#">Shortcodes</a>
+            <a href="portfolio-3.html">Docencia</a>
             <ul class="dropdown">
-              <li><a href="tabs.html">Tabs</a>
+              <li><a href="portfolio-2.html">Asignaturas Impartidas</a>
               </li>
-              <li><a href="buttons.html">Buttons</a>
+              <li><a href="portfolio-3.html">Proyectos de Grado y Posgrado</a>
               </li>
-              <li><a href="forms.html">Forms</a></li>
-              <li><a href="action-box.html">Action Box</a>
+              <li><a href="portfolio-4.html">Laboratorio de Electrónica y Robótica</a>
               </li>
-              <li><a href="testimonials.html">Testimonials</a>
-              </li>
-              <li><a href="latest-posts.html">Latest Posts</a>
-              </li>
-              <li><a href="latest-projects.html">Latest Projects</a>
-              </li>
-              <li><a href="pricing.html">Pricing Tables</a>
-              </li>
-              <li><a href="animated-graphs.html">Animated Graphs</a>
-              </li>
-              <li><a href="accordion-toggles.html">Accordion & Toggles</a>
+              <li><a href="single-project.html">Charlas Académicas</a>
               </li>
             </ul>
           </li>
           <li>
-            <a href="portfolio-3.html">Portfolio</a>
+            <a href="#">Servicios</a>
             <ul class="dropdown">
-              <li><a href="portfolio-2.html">2 Columns</a>
+              <li><a class="active" href="services.html">Serviciosr</a>
               </li>
-              <li><a href="portfolio-3.html">3 Columns</a>
-              </li>
-              <li><a href="portfolio-4.html">4 Columns</a>
-              </li>
-              <li><a href="single-project.html">Single Project</a>
+              <li><a href="blog-left-sidebar.html">Colaboraciones</a>
               </li>
             </ul>
           </li>
           <li>
-            <a href="blog.html">Blog</a>
-            <ul class="dropdown">
-              <li><a href="blog.html">Blog - right Sidebar</a>
-              </li>
-              <li><a href="blog-left-sidebar.html">Blog - Left Sidebar</a>
-              </li>
-              <li><a href="single-post.html">Blog Single Post</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="contact.html">Contact</a>
+            <a href="contact.html">Contacto</a>
           </li>
         </ul>
+        <!-- Mobile Menu End -->
+
+      </div>
         <!-- Mobile Menu End -->
 
       </div>
@@ -351,7 +348,14 @@
     <div id="content">
       <div class="container">
         <div class="page-content">
+        
 
+       
+      <div  id="results" >
+              <h2 align="center" id="titleGad"></h2>
+            </div>
+
+        
 
           <div class="row">
 
@@ -360,6 +364,22 @@
               <img class="img-thumbnail" src="images/service-01.jpg" alt="" />
               <h4>Clean Modern Code</h4>
               <p>Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis quasi architect.</p>
+
+
+				
+			<div class="boton flecha-azul">
+			<div class="node-readmore">
+				<a href="consys/documents">Leer más</a>			
+				<div class="flecha"><p class="boton-mouseover"><i class="material-icons">chevron_right</i></p>
+           <p class="boton-bg"><i class="material-icons">arrow_right_alt</i></p></div></div>
+		   </div>
+
+
+
+
+
+
+
             </div>
             <!-- End Image Service Box 1 -->
 
@@ -368,6 +388,13 @@
               <img class="img-thumbnail" src="images/service-02.jpg" alt="" />
               <h4>Great Support</h4>
               <p>Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis quasi architect.</p>
+			<div class="boton flecha-azul">
+			<div class="node-readmore">
+				<a href="consys/documents">Leer más</a>			
+				<div class="flecha"><p class="boton-mouseover"><i class="material-icons">chevron_right</i></p>
+           <p class="boton-bg"><i class="material-icons">arrow_right_alt</i></p></div></div>
+		   </div>
+
             </div>
             <!-- End Image Service Box 2 -->
 
@@ -376,6 +403,13 @@
               <img class="img-thumbnail" src="images/service-03.jpg" alt="" />
               <h4>High Quality Theme</h4>
               <p>Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis quasi architect.</p>
+
+<div class="boton flecha-azul">
+			<div class="node-readmore">
+				<a href="consys/documents">Leer más</a>			
+				<div class="flecha"><p class="boton-mouseover"><i class="material-icons">chevron_right</i></p>
+           <p class="boton-bg"><i class="material-icons">arrow_right_alt</i></p></div></div>
+		   </div>
             </div>
             <!-- End Image Service Box 3 -->
 
@@ -384,152 +418,7 @@
           <!-- Divider -->
           <div class="hr1" style="margin-bottom:45px;"></div>
 
-          <div class="row">
-
-            <div class="col-md-4">
-
-              <!-- Classic Heading -->
-              <h4 class="classic-title"><span>We Aare Awesome</span></h4>
-
-              <!-- Accordion -->
-              <div class="panel-group" id="accordion">
-
-                <!-- Start Accordion 1 -->
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#collapse-one">
-												<i class="fa fa-angle-up control-icon"></i>
-												<i class="fa fa-desktop"></i> Fully Responsive Theme
-											</a>
-										</h4>
-                  </div>
-                  <div id="collapse-one" class="panel-collapse collapse in">
-                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ea commodo consequat. Duis aute irure dolor in reprehe in voluptate velit esse cillum dolore fugiat nulla pariatur.</div>
-                  </div>
-                </div>
-                <!-- End Accordion 1 -->
-
-                <!-- Start Accordion 2 -->
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#collapse-tow" class="collapsed">
-												<i class="fa fa-angle-up control-icon"></i>
-												<i class="fa fa-gift"></i> Touchable Slider
-											</a>
-										</h4>
-                  </div>
-                  <div id="collapse-tow" class="panel-collapse collapse">
-                    <div class="panel-body">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. The point of using Lorem Ipsum is that it has a <strong>more-or-less</strong> normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore...</div>
-                  </div>
-                </div>
-                <!-- End Accordion 2 -->
-
-                <!-- Start Accordion 3 -->
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#collapse-three" class="collapsed">
-												<i class="fa fa-angle-up control-icon"></i>
-												<i class="fa fa-tint"></i> Retina Ready
-											</a>
-										</h4>
-                  </div>
-                  <div id="collapse-three" class="panel-collapse collapse">
-                    <div class="panel-body"><strong>Duis</strong> aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore...</div>
-                  </div>
-                </div>
-                <!-- End Accordion 3 -->
-
-              </div>
-              <!-- End Accordion -->
-
-            </div>
-
-            <div class="col-md-8">
-
-              <!-- Classic Heading -->
-              <h4 class="classic-title"><span>Our Features</span></h4>
-
-              <div class="row">
-
-                <!-- Start Service Icon 1 -->
-                <div class="col-md-6 service-box service-icon-left-more">
-                  <div class="service-icon">
-                    <i class="fa fa-magic icon-medium"></i>
-                  </div>
-                  <div class="service-content">
-                    <h4>Photoshop</h4>
-                    <p>It is a long <strong class="accent-color">established</strong> fact that a reader will be distracted by the readable content of a page.</p>
-                  </div>
-                </div>
-                <!-- End Service Icon 1 -->
-
-                <!-- Start Service Icon 2 -->
-                <div class="col-md-6 service-box service-icon-left-more">
-                  <div class="service-icon">
-                    <i class="fa fa-users icon-medium"></i>
-                  </div>
-                  <div class="service-content">
-                    <h4>Web Marketing</h4>
-                    <p>It is a long <strong class="accent-color">established</strong> fact that a reader will be distracted by the readable content of a page.</p>
-                  </div>
-                </div>
-                <!-- End Service Icon 2 -->
-
-                <!-- Start Service Icon 3 -->
-                <div class="col-md-6 service-box service-icon-left-more">
-                  <div class="service-icon">
-                    <i class="fa fa-globe icon-medium"></i>
-                  </div>
-                  <div class="service-content">
-                    <h4>Web Hosting</h4>
-                    <p>It is a long <strong class="accent-color">established</strong> fact that a reader will be distracted by the readable content of a page.</p>
-                  </div>
-                </div>
-                <!-- End Service Icon 3 -->
-
-                <!-- Start Service Icon 4 -->
-                <div class="col-md-6 service-box service-icon-left-more">
-                  <div class="service-icon">
-                    <i class="fa fa-picture-o icon-medium"></i>
-                  </div>
-                  <div class="service-content">
-                    <h4>Phtography</h4>
-                    <p>It is a long <strong class="accent-color">established</strong> fact that a reader will be distracted by the readable content of a page.</p>
-                  </div>
-                </div>
-                <!-- End Service Icon 4 -->
-
-                <!-- Start Service Icon 5 -->
-                <div class="col-md-6 service-box service-icon-left-more">
-                  <div class="service-icon">
-                    <i class="fa fa-leaf icon-medium"></i>
-                  </div>
-                  <div class="service-content">
-                    <h4>Product Design</h4>
-                    <p>It is a long <strong class="accent-color">established</strong> fact that a reader will be distracted by the readable content of a page.</p>
-                  </div>
-                </div>
-                <!-- End Service Icon 5 -->
-
-                <!-- Start Service Icon 6 -->
-                <div class="col-md-6 service-box service-icon-left-more">
-                  <div class="service-icon">
-                    <i class="fa fa-umbrella icon-medium"></i>
-                  </div>
-                  <div class="service-content">
-                    <h4>Supporting</h4>
-                    <p>It is a long <strong class="accent-color">established</strong> fact that a reader will be distracted by the readable content of a page.</p>
-                  </div>
-                </div>
-                <!-- End Service Icon 6 -->
-
-              </div>
-            </div>
-
-          </div>
+         
 
           <!-- Divider -->
           <div class="hr1" style="margin-bottom:25px;"></div>
@@ -541,89 +430,58 @@
               <!-- Start Clients Carousel -->
               <div class="our-clients">
 
-                <!-- Classic Heading -->
-                <h4 class="classic-title"><span>Our Clients</span></h4>
+            <!-- Classic Heading -->
+            <h4 class="classic-title2"><span>Colaboraciones</span></h4>
 
-                <div class="clients-carousel custom-carousel touch-carousel" data-appeared-items="4">
+            <div class="clients-carousel custom-carousel touch-carousel" data-appeared-items="5">
 
-                  <!-- Client 1 -->
-                  <div class="client-item item">
-                    <a href="#"><img src="images/c1.png" alt="" /></a>
-                  </div>
-
-                  <!-- Client 2 -->
-                  <div class="client-item item">
-                    <a href="#"><img src="images/c2.png" alt="" /></a>
-                  </div>
-
-                  <!-- Client 3 -->
-                  <div class="client-item item">
-                    <a href="#"><img src="images/c3.png" alt="" /></a>
-                  </div>
-
-                  <!-- Client 4 -->
-                  <div class="client-item item">
-                    <a href="#"><img src="images/c4.png" alt="" /></a>
-                  </div>
-
-                  <!-- Client 5 -->
-                  <div class="client-item item">
-                    <a href="#"><img src="images/c5.png" alt="" /></a>
-                  </div>
-
-                  <!-- Client 6 -->
-                  <div class="client-item item">
-                    <a href="#"><img src="images/c6.png" alt="" /></a>
-                  </div>
-
-                  <!-- Client 7 -->
-                  <div class="client-item item">
-                    <a href="#"><img src="images/c7.png" alt="" /></a>
-                  </div>
-
-                  <!-- Client 8 -->
-                  <div class="client-item item">
-                    <a href="#"><img src="images/c8.png" alt="" /></a>
-                  </div>
-
-                </div>
+              <!-- Client 1 -->
+              <div class="client-item item">
+                <a href="#"><img src="images/c1.png" alt="" /></a>
               </div>
+
+              <!-- Client 2 -->
+              <div class="client-item item">
+                <a href="#"><img src="images/c2.png" alt="" /></a>
+              </div>
+
+              <!-- Client 3 -->
+              <div class="client-item item">
+                <a href="#"><img src="images/c3.png" alt="" /></a>
+              </div>
+
+              <!-- Client 4 -->
+              <div class="client-item item">
+                <a href="#"><img src="images/c4.png" alt="" /></a>
+              </div>
+
+              <!-- Client 5 -->
+              <div class="client-item item">
+                <a href="#"><img src="images/c5.png" alt="" /></a>
+              </div>
+
+              <!-- Client 6 -->
+              <div class="client-item item">
+                <a href="#"><img src="images/c6.png" alt="" /></a>
+              </div>
+
+              <!-- Client 7 -->
+              <div class="client-item item">
+                <a href="#"><img src="images/c7.png" alt="" /></a>
+              </div>
+
+              <!-- Client 8 -->
+              <div class="client-item item">
+                <a href="#"><img src="images/c8.png" alt="" /></a>
+              </div>
+
+            </div>
+          </div>
               <!-- End Clients Carousel -->
 
             </div>
 
-            <div class="col-md-4">
-
-              <!-- Classic Heading -->
-              <h4 class="classic-title"><span>Client Testimonials</span></h4>
-
-              <!-- Start Testimonials Carousel -->
-              <div class="custom-carousel show-one-slide touch-carousel" data-appeared-items="1">
-                <!-- Testimonial 1 -->
-                <div class="classic-testimonials item">
-                  <div class="testimonial-content">
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim laborum.</p>
-                  </div>
-                  <div class="testimonial-author"><span>John Doe</span> - Customer</div>
-                </div>
-                <!-- Testimonial 2 -->
-                <div class="classic-testimonials item">
-                  <div class="testimonial-content">
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim laborum.</p>
-                  </div>
-                  <div class="testimonial-author"><span>John Doe</span> - Customer</div>
-                </div>
-                <!-- Testimonial 3 -->
-                <div class="classic-testimonials item">
-                  <div class="testimonial-content">
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim laborum.</p>
-                  </div>
-                  <div class="testimonial-author"><span>John Doe</span> - Customer</div>
-                </div>
-              </div>
-              <!-- End Testimonials Carousel -->
-
-            </div>
+      
 
           </div>
 
