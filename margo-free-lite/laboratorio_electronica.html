@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><html lang="en" class="no-js"> <![endif]-->
 <html lang="es">
@@ -6,7 +6,7 @@
 <head>
 
   <!-- Basic -->
-  <title>Consys | Servicios</title>
+  <title>Consys|Docencia</title>
 
   <!-- Define Charset -->
   <meta charset="utf-8">
@@ -20,6 +20,7 @@
 
   <!-- Bootstrap CSS  -->
   <link rel="stylesheet" href="asset/css/bootstrap.min.css" type="text/css" media="screen">
+
 
   <!-- Font Awesome CSS -->
   <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="screen">
@@ -39,6 +40,8 @@
   <!-- Color Defult -->
   <link rel="stylesheet" type="text/css" href="css/colors/red.css" media="screen" />
 
+  <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
+  
  
 
   <!-- Margo JS  -->
@@ -52,126 +55,54 @@
   <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
   <script type="text/javascript" src="js/jquery.appear.js"></script>
   <script type="text/javascript" src="js/count-to.js"></script>
-  <script type="text/javascript" src="js/jquery.textillate.js"></script>
-  <script type="text/javascript" src="js/jquery.lettering.js"></script>
   <script type="text/javascript" src="js/jquery.easypiechart.min.js"></script>
   <script type="text/javascript" src="js/smooth-scroll.js"></script>
   <script type="text/javascript" src="js/skrollr.js"></script>
   <script type="text/javascript" src="js/jquery.parallax.js"></script>
   <script type="text/javascript" src="js/mediaelement-and-player.js"></script>
-  <script type="text/javascript" src="js/jquery.slicknav.js"></script>   
-<script type="text/javascript" src='https://www.google.com/jsapi'></script>
-<script type="text/javascript">
+  <script type="text/javascript" src="js/jquery.slicknav.js"></script> 
+  <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src='https://www.google.com/jsapi'></script>
 
 
-              google.load('visualization', '1', {'packages': ['controls', 'corechart']});
-                                var dataSource = "https://docs.google.com/spreadsheets/d/1SQCAxBGfCM2Eed_VQ3jetTiBNeSrPb20XJ1-a8VjNTI/edit#gid=0";
-           function getDataGad() {
-                           var query = new google.visualization.Query(dataSource);
-                            var sentencia = "SELECT A,B,C,D ";
-
-                                    query.setQuery(sentencia);
-                                    query.send(function (response) {
-                                        if (response.isError()) {
-                                            alert("Error consultando el archivo: " + response.getMessage());
-                                            return;
-                                        }
-
-                                        var datos = response.getDataTable();
-                                        var p = '';
-                                        console.log(datos);
-                                        var result = "<table id='tabla_servicios'>";
-
-
-                                       result += "<tr>";
-                                        for (var j = 0; j < datos.Mf.length; j++) {
-                                            
-
-                                               // p += '<tr> <p>  <th WIDTH= 183><b>' + datos.Mf[k].label + ':</b></th>  <td>' + datos.Nf[j].c[k] + '</td></p> </tr>';
-                                                 
-                                            result+='<th>  '+datos.Mf[j].label+'  </th>';
-                                            
-                                            console.log(datos.Mf[j].label); 
-
-
-                                        }result += "</tr>";
-                                        $(result).appendTo('#results');
-                                    });
-                                }
-        </script>
+   
+  
  
   <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+ 
 
 </head>
 
-<body onload="getDataGad();">
+<body >
 
-  <!-- Container -->
+  <!-- Full Body Container -->
   <div id="container">
 
-    <!-- Start Header -->
-    
+    <!-- Start Header Section -->
     <header class="clearfix">
-
       <!-- Start Top Bar -->
       <div class="top-bar">
         <div class="container">
-          <div class="row">
-            <div class="col-md-6">
+          <div class="row2">
+            <div class="col-md-9">
               <!-- Start Contact Info -->
-              <ul class="contact-details">
-                <li><a href="#"><i class="fa fa-map-marker"></i> House-54/A, London, UK</a>
-                </li>
-                <li><a href="#"><i class="fa fa-envelope-o"></i> info@yourcompany.com</a>
-                </li>
-                <li><a href="#"><i class="fa fa-phone"></i> +12 345 678 000</a>
-                </li>
-              </ul>
+              
               <!-- End Contact Info -->
             </div>
-            <div class="col-md-6">
-              <!-- Start Social Links -->
-              <ul class="social-list">
-                <li>
-                  <a class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="#"><i class="fa fa-facebook"></i></a>
-                </li>
-                <li>
-                  <a class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
-                </li>
-                <li>
-                  <a class="google itl-tooltip" data-placement="bottom" title="Google Plus" href="#"><i class="fa fa-google-plus"></i></a>
-                </li>
-                <li>
-                  <a class="dribbble itl-tooltip" data-placement="bottom" title="Dribble" href="#"><i class="fa fa-dribbble"></i></a>
-                </li>
-                <li>
-                  <a class="linkdin itl-tooltip" data-placement="bottom" title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-                </li>
-                <li>
-                  <a class="flickr itl-tooltip" data-placement="bottom" title="Flickr" href="#"><i class="fa fa-flickr"></i></a>
-                </li>
-                <li>
-                  <a class="tumblr itl-tooltip" data-placement="bottom" title="Tumblr" href="#"><i class="fa fa-tumblr"></i></a>
-                </li>
-                <li>
-                  <a class="instgram itl-tooltip" data-placement="bottom" title="Instagram" href="#"><i class="fa fa-instagram"></i></a>
-                </li>
-                <li>
-                  <a class="vimeo itl-tooltip" data-placement="bottom" title="vimeo" href="#"><i class="fa fa-vimeo-square"></i></a>
-                </li>
-                <li>
-                  <a class="skype itl-tooltip" data-placement="bottom" title="Skype" href="#"><i class="fa fa-skype"></i></a>
-                </li>
-              </ul>
-              <!-- End Social Links -->
-            </div>
+            <!-- .col-md-6 -->
+            
+            <!-- .col-md-6 -->
           </div>
+          <!-- .row -->
         </div>
+        <!-- .container -->
       </div>
+      <!-- .top-bar -->
       <!-- End Top Bar -->
 
-      <!-- Start Header ( Logo & Naviagtion ) -->
+
+      <!-- Start  Logo & Naviagtion  -->
       <div class="navbar navbar-default navbar-top" role="navigation" data-spy="affix" data-offset-top="50">
         <div class="container">
           <div class="navbar-header">
@@ -198,7 +129,7 @@
             <!-- Start Navigation List -->
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <a href="index.html">Inicio</a>
+                <a  href="index.html">Inicio</a>
               </li>
               <li>
                 <a href="about.html">Sobre Nosotros</a>
@@ -207,48 +138,48 @@
                   </li>
                   <li><a href="#">Integrantes del grupo</a>
                   </li>
-                  <li><a href="right-sidebar.html">Premios y Reconocimientos</a>
+                  <li><a href="#">Premios y Reconocimientos</a>
                   </li>
-                  <li><a href="left-sidebar.html">Alianzas Estratégicas</a>
+                  <li><a href="#">Alianzas Estratégicas</a>
                   </li>
                 </ul>
               </li>
               <li>
                 <a href="#">Investigación</a>
                 <ul class="dropdown">
-                  <li><a href="tabs.html">Proyectos de Investigación</a>
+                  <li><a href="proyectos_investigacion.html">Proyectos de Investigación</a>
                   </li>
                   <li><a href="publicaciones_cientificas.html">Publicaciones Cientificas</a>
                   </li>
                   <li><a href="patentes.html">Patentes</a>
                   </li>
-                  <li><a href="action-box.html">Charlas Científicas</a>
+                  <li><a href="#">Charlas Científicas</a>
                   </li>
                 </ul>
               </li>
               <li>
-                <a href="#">Docencia</a>
+                <a class="active" href="#"">Docencia</a>
                 <ul class="dropdown">
                   <li><a href="docencia_asig.html">Asignaturas Impartidas</a>
                   </li>
                   <li><a href="pregrado_post.html">Proyecto de Grado y Posgrado</a>
                   </li>
-                  <li><a href="#">Laboratorio de Electrónica y Robótica</a>
+                  <li><a href="laboratorio_electronica.html">Laboratorio de Electrónica y Robótica</a>
                   </li>
                   <li><a href="#">Charlas Académicas</a>
                   </li>
                 </ul>
               </li>
               <li>
-                <a class="active" href="#">Servicios</a>
+                <a href="#">Servicios</a>
                 <ul class="dropdown">
-                  <li><a href="services.html">Servicios</a>
+                  <li><a href="servicios.html">Servicios</a>
                   </li>
-                  <li><a href="blog-left-sidebar.html">Colaboraciones</a>
+                  <li><a href="colaboraciones.html">Colaboraciones</a>
                   </li>
                 </ul>
               </li>
-              <li><a href="contact.html">Contacto</a>
+              <li><a href="#">Contacto</a>
               </li>
             </ul>
             <!-- End Navigation List -->
@@ -258,89 +189,71 @@
         <!-- Mobile Menu Start -->
         <ul class="wpb-mobile-menu">
           <li>
-            <a  href="index.html">Inicio</a>
+            <a class="active" href="index.html">Inicio</a>
           </li>
           <li>
-            <a href="about.html">Sobre Nosotros</a>
+            <a href="#">Sobre Nosotros</a>
             <ul class="dropdown">
-              <li><a href="about.html">Descripción del Grupo</a>
+              <li><a href="#">Descripción del Grupo</a>
               </li>
-              <li><a href="services.html">Integrantes del Grupo</a>
+              <li><a href="#">Integrantes del Grupo</a>
               </li>
-              <li><a href="right-sidebar.html">Premios y Reconocimientos</a>
+              <li><a href="#">Premios y Reconocimientos</a>
               </li>
-              <li><a href="left-sidebar.html">Alianzas Estratégicas</a>
+              <li><a href="#">Alianzas Estratégicas</a>
               </li>
             </ul>
           </li>
           <li>
             <a href="#">Investigación</a>
             <ul class="dropdown">
-              <li><a href="tabs.html">Proyectos de Investigación</a>
+              <li><a href="proyectos_investigacion.html">Proyectos de Investigación</a>
               </li>
-              <li><a href="buttons.html">Publicaciones Científicas</a>
+              <li><a href="#">Publicaciones Científicas</a>
               </li>
               <li><a href="patentes.html">Patentes</a>
               </li>
-              <li><a href="action-box.html">Charlas Científicas</a>
+              <li><a href="#">Charlas Científicas</a>
               </li>
             </ul>
           </li>
           <li>
-            <a href="portfolio-3.html">Docencia</a>
+            <a href="#">Docencia</a>
             <ul class="dropdown">
-              <li><a href="portfolio-2.html">Asignaturas Impartidas</a>
+              <li><a href="#">Asignaturas Impartidas</a>
               </li>
-              <li><a href="portfolio-3.html">Proyectos de Grado y Posgrado</a>
+              <li><a href="#">Proyectos de Grado y Posgrado</a>
               </li>
-              <li><a href="portfolio-4.html">Laboratorio de Electrónica y Robótica</a>
+              <li><a href="laboratorio_electronica.html">Laboratorio de Electrónica y Robótica</a>
               </li>
-              <li><a href="single-project.html">Charlas Académicas</a>
+              <li><a href="#">Charlas Académicas</a>
               </li>
             </ul>
           </li>
           <li>
             <a href="#">Servicios</a>
             <ul class="dropdown">
-              <li><a class="active" href="services.html">Serviciosr</a>
+              <li><a href="servicios.html">Serviciosr</a>
               </li>
-              <li><a href="blog-left-sidebar.html">Colaboraciones</a>
+              <li><a href="colaboraciones.html">Colaboraciones</a>
               </li>
             </ul>
           </li>
           <li>
-            <a href="contact.html">Contacto</a>
+            <a href="#">Contacto</a>
           </li>
         </ul>
         <!-- Mobile Menu End -->
 
       </div>
-        <!-- Mobile Menu End -->
-
-      </div>
-      <!-- End Header ( Logo & Naviagtion ) -->
-
+      <!-- End Header Logo & Naviagtion -->
+  
     </header>
     <!-- End Header -->
 
 
     <!-- Start Page Banner -->
-    <div class="page-banner" style="padding:40px 0; background: url(images/slide-02-bg.jpg) center #f9f9f9;">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <h2>Services</h2>
-            <p>We Are Professional</p>
-          </div>
-          <div class="col-md-6">
-            <ul class="breadcrumbs">
-              <li><a href="#">Home</a></li>
-              <li>Services</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    
     <!-- End Page Banner -->
 
 
@@ -348,149 +261,152 @@
     <div id="content">
       <div class="container">
         <div class="page-content">
-        
 
-       
-      <div  id="results" >
-              <h2 align="center" id="titleGad"></h2>
-            </div>
-
-        
-
-          <div class="row">
-
-            <!-- Start Image Service Box 1 -->
-            <div class="col-md-4 image-service-box">
-              <img class="img-thumbnail" src="images/service-01.jpg" alt="" />
-              <h4>Clean Modern Code</h4>
-              <p>Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis quasi architect.</p>
+              <h1 class="classic-title"><strong>Laboratorio de Electrónica y Robótica</strong></h1>
+              <hr class="separador">
+            
+          <img src="images/slider/im1.jpg" class="imagen_laboratorio">
+          <h6>Descripción</h6>
+			<p>El Laboratorio LERAP es un espacio de trabajo para que Universidad, Empresa y Sociedad interactúen. La Empresa/Industria y la Sociedad exponen sus problemas y requerimientos puntuales, la Universidad propone y socializa desarrollos e innovaciones de base tecnológica aplicadas a solucionar dichos problemas identificados.</p>
+			<p>El Laboratorio LERAP cuenta con los medios tecnológicos, infraestructura y asesoría para afrontar proyectos centrados en hardware, dentro del marco de áreas temáticas como: microelectrónica, robótica, control y automatización, y, sensores. Las líneas temáticas específicas son:
+			</p>
 
 
-				
-			<div class="boton flecha-azul">
-			<div class="node-readmore">
-				<a href="consys/documents">Leer más</a>			
-				<div class="flecha"><p class="boton-mouseover"><i class="material-icons">chevron_right</i></p>
-           <p class="boton-bg"><i class="material-icons">arrow_right_alt</i></p></div></div>
-		   </div>
+			<ul><li>Proyectos tecnológicos aplicados a los lineamientos de la iniciativa de Transformación de la Matriz productiva.</li></ul>
+			<ul><li>Proyectos tecnológicos aplicados a los lineamientos de la iniciativa de Transformación de la Matriz energética.</li></ul>
+			<ul><li>Proyectos tecnológicos de monitoreo/telemonitoreo de variables aplicados a la iniciativa de ciudades/territorios inteligentes.</li></ul>
+			<ul><li>Proyectos tecnológicos aplicados a personas con capacidades especiales.</li></ul> 
+			<p>
+				El Laboratorio y sus líneas temáticas se crearon con la finalidad de aportar con: el Objetivo 2 (Políticas 2.2 y 2.11), el Objetivo 10 (Políticas 10.1, 10.2 y 10.9) y el Objetivo 11 (Política 11.1) del Plan Nacional para el Buen Vivir 2013-2017, propuesto por el Gobierno Nacional del Ecuador.
+			</p>
+
+			<h6>Objetivos</h6>
+			<h6>Objetivo General:</h6>
+			<p>Idear, Diseñar, prototipar y evaluar soluciones de base tecnológica basadas en hardware, aplicadas a problemas del entorno industrial, empresarial, social y natural.</p>
+			<h6>Objetivos Específicos:</h6>
+			<ul><li>Ser un espacio para que Universidad, Empresa y Sociedad interactúen. Empresa y Sociedad expone sus problemas y requerimientos puntuales, Universidad propone y socializa desarrollos e innovaciones.</li></ul>
+			<ul><li>Ser un espacio de trabajo colaborativo estudiantes, docentes y clubes tecnológicos, en soluciones de base tecnológica como respuesta a los retos planteados, dicho trabajo colaborativo fomentará la generación de masa crítica tecnológicamente especializada.</li></ul>
+
+			<h6>Equipamiento</h6>
+			<p>LERAP está segmentado en 3 sub-áreas funcionales de trabajo, las mismas que se complementan para la estructuración de un sistema o solución tecnológica enfocada a las áreas temáticas planteadas.</p>
+			<ul><li><b>Sensores e Instrumentación:</b>En esta sub-área se encontrará el equipamiento para el diseño, evaluación e implementación de dispositivos y sistemas electrónicos, orientados al monitoreo, telemonitoreo y adquisición de datos.</li></ul>
+			<ul><li><b>Sistemas embebidos:</b>En esta sub-área se encontrará el equipamiento para el diseño e implementación de dispositivos electrónicos y microelectrónicos para procesamiento de datos, análisis de datos, visualización y/o transmisión de información.</li></ul>
+			<ul><li><b>Robótica y Prototipado mecánico:</b>En esta sub-área se encontrará el equipamiento para el diseño e implementación de sistemas y estructuras mecánicas y electromecánicas que son complemento de la arquitectura de la solución.</li></ul>
+
+          <hr class="separador">
+			<h6>Equipos para impresión y escaneo 3D</h6>
+			<img src="images/slider/im1.jpg" class="imagen_laboratorio">
+          
+			<p>El Laboratorio posee una impresora 3D y un escáner 3D, con el objetivo de convertir modelos CAD en objetos 3D, así como también convertir de objetos reales en archivos CAD para replicación o modificaciones.</p>
+			<p>El equipamiento incluye:</p>
 
 
+			<ul><li>MakerBot Replicator 2X, Impresora 3D de escritorio con extrusora dual, optimizada para filamento termoplástico ABS.</li></ul>
+			<div>
+			<ul><li>Características de impresión: Volumen 24.6 L x 15.2 W x 15.5 H cm.</li></ul>
+			<ul><li>Resolución de capa 100 micrones.</li></ul>
+			<ul><li>Precisión en posicionamiento XY 11 micrones, Z 2.5 micrones.</li></ul>
+			<ul><li>Diámetro del filamento 1.75 mm.</li></ul>
+			<ul><li>Tipos de archivo STL, OBJ, THING.</li></ul>
+			</div>
+			<ul><li>MakerBot Digitizer, Escáner 3D de escritorio</li></ul>
+			<div>
+			<ul><li>Volumen de escaneo hasta 20.3 cm de diámetro y 20.3 cm de altura.</li></ul>
+			<ul><li>Exactitud dimensional ± 2 mm.</li></ul>
+			<ul><li>Resolución de detalle 0.5 mm.</li></ul>
+			<ul><li>Velocidad de scan aproximadamente 12 minutos. 800 pasos por rotación. Máximo peso de la plataforma rotatoria 3 kg.</li></ul>
+			<ul><li>Archivos compatibles STL y THING.</li></ul>
+			</div>
+
+			<hr class="separador">
+			<h6>Equipos para diseño electrónico</h6>
+			<img src="images/slider/im1.jpg" class="imagen_laboratorio">
+          
+			<p>El Laboratorio está quipado para afrontar tareas de diseño, simulación, desarrollo y pruebas de una amplia variedad de productos electrónicos, por ejemplo sensores y dispositivos de medición de variables; controladores industriales; dispositivos robóticos; y electrónica de consumo.</p>
+			<p>El equipamiento incluye:</p>
 
 
+			<ul><li>Tektronix TDS2002C, Osciloscopio digital (2).</li></ul>
+			
+			<ul><li>Tektronix AFG2021, Instrumento Generador de funciones.</li></ul>
+			<ul><li>Tektronix PWS2185, Fuente de poder variable (2).</li></ul>
+			<ul><li>BK Precision 1673, Fuente de poder variable.</li></ul>
+			<ul><li>NI sbRIO 9636 y myRIO, tarjeta de desarrollo de sistemas embebidos (4).</li></ul>
+			<ul><li>NI myDAQ, tarjeta de adquisición de datos para mediciones basadas en PC.</li></ul>
+			<ul><li>CompuLab fit-PC3 Pro, tarjeta de desarrollo de sistemas embebidos.</li></ul>
+			<ul><li>ProsKit SS-989A, estación de soldadura.</li></ul>
+			<ul><li>Tarjetas varias para desarrollo, Arduinos + Shields, RaspberryPi, Intel Galileo, Waspmote.</li></ul>
+
+			<hr class="separador">
+			<h6>Equipos para diseño mecatrónico</h6>
+			<img src="images/slider/im1.jpg" class="imagen_laboratorio">
+          
+			<p>En el Laboratorio podemos afrontar tareas de diseño y desarrollo aplicado a prototipos de productos electromecánicos. </p>
+			<p>El equipamiento incluye:</p>
 
 
+			<ul><li>Equipo CNC de 3 ejes.</li></ul>
+			<div>
+			<ul><li>Velocidad de trabajo: 0 ~ 800mm/min.</li></ul>
+			<ul><li>Precisión: 0,05 mm.</li></ul>
+			<ul><li>Tipo de motor: motor paso a paso.</li></ul>
+			<ul><li>Lenguaje de comandos: código G</li></ul>
+			<ul><li>Consumo de potencia: 300W.</li></ul>
+			</div>
+			<ul><li>Herramientas varias</li></ul>
+			<div>
+			<ul><li>Taladro de piso Skil.</li></ul>
+			<ul><li>Taladro de mesa Skil.</li></ul>
+			<ul><li>Torno de mesa Metalworker.</li></ul>
+			<ul><li>Esmeril de mesa Skil.</li></ul>
+			<ul><li>Cierra eléctrica para aluminio Skil.</li></ul>
+			<ul><li>Soldadora de metal Ptk.</li></ul>
+			<ul><li>Cargador de baterías Ptk.</li></ul>
+			<ul><li>Juegos de herramientas y accesorios (destornilladores, llaves, dados, brocas, limas).</li></ul>
+			</div>
+			
+			<hr class="separador">
+			<h6>Diseño y programación de sistemas robóticos</h6>
+			<img src="images/slider/im1.jpg" class="imagen_laboratorio">
+          
+			<p>Además en el Laboratorio podemos afrontar tareas de diseño, simulación, implementación y pruebas de algoritmos aplicados a sistemas robóticos.</p>
+			<p>El equipamiento incluye:</p>
 
-            </div>
-            <!-- End Image Service Box 1 -->
 
-            <!-- Start Image Service Box 2 -->
-            <div class="col-md-4 image-service-box">
-              <img class="img-thumbnail" src="images/service-02.jpg" alt="" />
-              <h4>Great Support</h4>
-              <p>Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis quasi architect.</p>
-			<div class="boton flecha-azul">
-			<div class="node-readmore">
-				<a href="consys/documents">Leer más</a>			
-				<div class="flecha"><p class="boton-mouseover"><i class="material-icons">chevron_right</i></p>
-           <p class="boton-bg"><i class="material-icons">arrow_right_alt</i></p></div></div>
-		   </div>
+			<ul><li>•	Robots NAO H25 (2), Robot humanoide utilizado como una plataforma de desarrollo para actividades de investigación y educación</li></ul>
+			<div>
+			<ul><li>Robot humanoide 58cm / 5.4kg.</li></ul>
+			<ul><li>NAO es un robot interactivo, autónomo y completamente programable.</li></ul>
+			<ul><li>Capacidad de conectividad.</li></ul>
+			<ul><li>Funciones Text to speech & Automatic speech Recognition.</li></ul>
+			<ul><li>Capacidad de reconocimiento de imágenes.</li></ul>
+			
+			<ul><li>Posee 25 grados de libertad.</li></ul>
+			
+			<ul><li>Capacidad para detectar obstáculos.</li></ul>
+			<ul><li>Lenguajes: Inglés, Francés, Coreano, Chino mandarín.</li></ul>
+			<ul><li>Programable en Python, C++, .NET, Java…</li></ul>
+			<ul><li>CPU: Procesador: Intel Atom Z530, Memoria caché: 512 kB, Velocidad de reloj: 1.6 GHz.</li></ul>
+			<ul><li>Memoria: Memoria RAM: 1 GB, Memoria Flash: 2 GB, Memomia Micro SDHC: 8 GB.</li></ul>
+			<ul><li>Conectividad: Conexión Ethernet: RJ45, Conexión WiFi: IEEE 802.11a/b/g/n, Conexión USB (Kinect, Arduino, RPi…)</li></ul>
+			</div>
 
-            </div>
-            <!-- End Image Service Box 2 -->
+		        </div>
 
-            <!-- Start Image Service Box 3 -->
-            <div class="col-md-4 image-service-box">
-              <img class="img-thumbnail" src="images/service-03.jpg" alt="" />
-              <h4>High Quality Theme</h4>
-              <p>Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis quasi architect.</p>
-
-<div class="boton flecha-azul">
-			<div class="node-readmore">
-				<a href="consys/documents">Leer más</a>			
-				<div class="flecha"><p class="boton-mouseover"><i class="material-icons">chevron_right</i></p>
-           <p class="boton-bg"><i class="material-icons">arrow_right_alt</i></p></div></div>
-		   </div>
-            </div>
-            <!-- End Image Service Box 3 -->
-
-          </div>
-
+   
           <!-- Divider -->
-          <div class="hr1" style="margin-bottom:45px;"></div>
+          <div class="hr1" style="margin-bottom:50px;"></div>
 
-         
-
-          <!-- Divider -->
-          <div class="hr1" style="margin-bottom:25px;"></div>
-
-          <div class="row">
-
-            <div class="col-md-8">
-
-              <!-- Start Clients Carousel -->
-              <div class="our-clients">
-
-            <!-- Classic Heading -->
-            <h4 class="classic-title2"><span>Colaboraciones</span></h4>
-
-            <div class="clients-carousel custom-carousel touch-carousel" data-appeared-items="5">
-
-              <!-- Client 1 -->
-              <div class="client-item item">
-                <a href="#"><img src="images/c1.png" alt="" /></a>
-              </div>
-
-              <!-- Client 2 -->
-              <div class="client-item item">
-                <a href="#"><img src="images/c2.png" alt="" /></a>
-              </div>
-
-              <!-- Client 3 -->
-              <div class="client-item item">
-                <a href="#"><img src="images/c3.png" alt="" /></a>
-              </div>
-
-              <!-- Client 4 -->
-              <div class="client-item item">
-                <a href="#"><img src="images/c4.png" alt="" /></a>
-              </div>
-
-              <!-- Client 5 -->
-              <div class="client-item item">
-                <a href="#"><img src="images/c5.png" alt="" /></a>
-              </div>
-
-              <!-- Client 6 -->
-              <div class="client-item item">
-                <a href="#"><img src="images/c6.png" alt="" /></a>
-              </div>
-
-              <!-- Client 7 -->
-              <div class="client-item item">
-                <a href="#"><img src="images/c7.png" alt="" /></a>
-              </div>
-
-              <!-- Client 8 -->
-              <div class="client-item item">
-                <a href="#"><img src="images/c8.png" alt="" /></a>
-              </div>
-
-            </div>
-          </div>
-              <!-- End Clients Carousel -->
-
-            </div>
+          <!-- Start Clients Carousel -->
+          
+          <!-- End Clients Carousel -->
+        </div>
+    </div>
+    </div>
 
       
-
-          </div>
-
-
-        </div>
-      </div>
-    </div>
-    <!-- End Content -->
-
+    <!-- End content -->
+</body>
 
     <!-- Start Footer -->
     <footer>
@@ -631,7 +547,7 @@
           <!-- Start Contact Widget -->
           <div class="col-md-3">
             <div class="footer-widget contact-widget">
-              <h4><img src="images/footer-margo.png" class="img-responsive" alt="Footer Logo" /></h4>
+              <h4><img src="https://investigacion.utpl.edu.ec/grupos/sites/all/themes/utpl/logo.png" class="img-responsive" alt="Footer Logo" /></h4>
               <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
               <ul>
                 <li><span>Phone Number:</span> +01 234 567 890</li>
@@ -651,7 +567,7 @@
         <div class="copyright-section">
           <div class="row">
             <div class="col-md-6">
-              <p>Copyright 2013 Margo - All Rights Reserved</p>
+              <p>Copyright © 2016 Margo - Designed &amp; Developed by <a href="http://graygrids.com">GrayGrids</a></p>
             </div>
             <div class="col-md-6">
               <ul class="footer-nav">
@@ -674,9 +590,9 @@
   <!-- Go To Top Link -->
   <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 
-Post Free Ad
   <script type="text/javascript" src="js/script.js"></script>
 
-</body>
+
+
 
 </html>

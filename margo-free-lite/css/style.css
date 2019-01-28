@@ -1,11 +1,12 @@
 
 body {
+	font-family: 'Montserrat', sans-serif;
 	font-size: 13px;
 	font-weight: 300;
 	color: #666;
 	overflow-x: hidden;
 	background-color:#f6f6f6;
-	font-family: 'Montserrat', sans-serif;
+	
 }
 strong, b {
 	font-weight: 600;
@@ -58,8 +59,8 @@ i {
 }
 
 h1, h2, h3, h4, h5, h6 {
-		font-family: 'Montserrat', sans-serif;
-		clear: both;
+	font-family: 'Montserrat', sans-serif;
+	clear: both;
 	font-weight: 600;
 	margin: 0;
 	color: #003f72;
@@ -117,7 +118,29 @@ p strong {
 }
 
 .page-content p {
-	margin-bottom: 15px;
+	padding-bottom: 15px;
+	width: 65%;
+	padding-top: 5px;
+	text-align: justify;
+	margin-left: 250px;
+
+}
+.page-content h6{
+	color: black;
+	padding-top: 20px;
+	margin-left: 250px;
+}
+.page-content ul li{
+	color: black;
+	width: 50%;
+	padding-top: 10px;
+	margin-left: 290px;
+	text-align: justify;
+	
+}
+.page-content div ul li{
+	list-style: square;
+	margin-left: 310px;
 }
 
 .wite-text {
@@ -395,14 +418,6 @@ boton leer mas
     float: right;
 }
 .boton a,
-.node-readmore a, .node-readmore span{  
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14pt!important;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 0.5em;
-    color: white!important;
-}
 
 
 .boton p{
@@ -471,12 +486,7 @@ boton leer mas
     color: #003f72;
 }
 
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/materialicons/v41/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
-}
+
 
 .material-icons {
   font-family: 'Material Icons';
@@ -841,6 +851,92 @@ text-align: center;
 	width: 80px;
 	height: 80px;
 }
+.imagen_laboratorio{
+	margin-left: 250px;
+	padding-top:5px;
+	padding-bottom: 5px;
+	width: auto;
+	height: auto;
+}
+.imagen_col{
+	float: left;
+	margin-left: 20px;
+	padding: 15px;
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	/* filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); */
+	filter: grayscale(100%);
+	transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+}
+.imagen_col:hover {
+	-webkit-filter: grayscale(0);
+	-moz-filter: grayscale(0);
+	-o-filter: grayscale(0);
+	filter: none;
+	opacity: 1;
+}
+.imagen_ser:hover {
+	-webkit-filter: grayscale(0);
+	-moz-filter: grayscale(0);
+	-o-filter: grayscale(0);
+	filter: none;
+	opacity: 1;
+}
+
+.colaboradores {
+	margin-left: 250px;
+}
+.colaboradores h6{
+	clear: both;
+	color: #003f72;
+	margin-left: 62px;
+	padding-top: 1px;
+}
+.imagen_ser{
+	float: left;
+	margin-left: 20px;
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	/* filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); */
+	filter: grayscale(100%);
+	transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+   	border: 1px solid #ddd;
+   	padding: 4px;
+   
+}
+.cont-ser{
+	float: left;
+	display: block;
+	padding-right: 20px;
+	padding-left: 20px;
+	width: 30%;
+}
+
+.servicios{
+	width: 100%;
+	margin-left: 150px;
+
+}
+.servicios, .page-content {
+	margin-right: 150px;
+}
+.servicios p{
+	margin-left: 20px;
+	width: 100%;
+	text-align: center;
+
+}
+p{
+	clear: both;
+}
 
 
 #infor-general{
@@ -928,6 +1024,14 @@ hr {
 	margin-left: 200px;
 	margin-top: -20px;
 	width: 220px;
+	height: 5px;
+	background-color: yellow;
+	border-style: none;
+}
+.line3{
+	margin-left: 200px;
+	margin-top: -20px;
+	width: 150px;
 	height: 5px;
 	background-color: yellow;
 	border-style: none;
