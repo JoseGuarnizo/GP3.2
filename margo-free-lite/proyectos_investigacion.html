@@ -45,7 +45,8 @@
  
 
   <!-- Margo JS  -->
-  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="js/jquery.migrate.js"></script>
   <script type="text/javascript" src="js/modernizrr.js"></script>
   <script type="text/javascript" src="asset/js/bootstrap.min.js"></script>
@@ -56,7 +57,6 @@
   <script type="text/javascript" src="js/jquery.appear.js"></script>
   <script type="text/javascript" src="js/count-to.js"></script>
   <script type="text/javascript" src="js/jquery.easypiechart.min.js"></script>
-  <script type="text/javascript" src="js/smooth-scroll.js"></script>
   <script type="text/javascript" src="js/skrollr.js"></script>
   <script type="text/javascript" src="js/jquery.parallax.js"></script>
   <script type="text/javascript" src="js/mediaelement-and-player.js"></script>
@@ -243,6 +243,7 @@
               </li>
             </ul>
           </li>
+
           <li>
             <a href="portfolio-3.html">Docencia</a>
             <ul class="dropdown">
@@ -279,7 +280,7 @@
                                 var dataSource = "https://docs.google.com/spreadsheets/d/1vT2xNvnYYwe_9G2hAsoAvUf2X6DcoY1HMIFo8goZDOs/edit#gid=0";
            function getDataGad() {
                            var query = new google.visualization.Query(dataSource);
-                            var sentencia = "SELECT A,B,C";
+                            var sentencia = "SELECT A,B,C,D,I";
 
                                     query.setQuery(sentencia);
                                     query.send(function (response) {
@@ -290,23 +291,84 @@
 
                               var datos = response.getDataTable();
                              proyectos='';
+
                              for (var i = 0; i < datos.Nf.length; i++) {
-                            proyectos+="<div id='infor_proyecto'>";
-                             proyectos+="<img src='"+datos.Nf[i].c[1].v+ "'class='imagen_proyectos'>";
-                              proyectos+="<p id='titulo_proyecto'>"+datos.Nf[i].c[0].v+"</p>";
-                              proyectos+="<p id= 'anio_proyecto'>"+datos.Nf[i].c[2].v+"</p>";
+                              
+                            proyectos+="<div id='infor_proyecto' >";
+                            proyectos+="<h6 id='tipo_proyecto'>Proyecto de "+datos.Nf[i].c[4].v+"</h6>";
+                             proyectos+="<img  src='"+datos.Nf[i].c[2].v+ "'class='imagen_proyectos' >";
+                              proyectos+="<p id='titulo_proyecto'>"+datos.Nf[i].c[1].v+"</p>";
+                              proyectos+="<p id='anio_proyecto'>Año: "+datos.Nf[i].c[3].v+"</p>";
+                              proyectos+="<a onclick=getInfo('"+datos.Nf[i].c[0].v+"');  class='boton_leer'>LEER MÁS</a>";
+                              proyectos+="<a onclick=getInfo('"+datos.Nf[i].c[0].v+"');  class='flecha'>"+"<img src='fonts/arrow-right2.png'>"+"</a>";
                               proyectos+="</div>";
                            }
-                          
-                            console.log(datos);
 
-
-                             
-                            
-                                        $(proyectos).appendTo('#informacion_proyectos');
+                              $(proyectos).appendTo('#informacion_proyectos');
                                     });
+                 
+              
+
                                 }
-        </script>  
+
+        
+
+                              function getInfo(datooo) {
+                                var query = new google.visualization.Query(dataSource);
+                                var sentencia = "SELECT A,E,F,G,H,I,J,K,L WHERE A = ";
+                                    sentencia += datooo + "";
+                                    query.setQuery(sentencia);
+                                    query.send(function (response) {
+                                        if (response.isError()) {
+                                            alert("Error consultando el archivo: " + response.getMessage());
+                                            return;
+                                        }
+
+                              var datos = response.getDataTable();
+                             proyectos='';
+                             for (var i = 0; i < datos.Nf.length; i++) {
+                            proyectos+="<div id='infor_ssss'>";
+                            proyectos+="<h4>Descripción</h4>";
+                              proyectos+=" <p id= 'descripcion'>"+datos.Nf[i].c[1].v+"</p>";
+                              proyectos+="<h5>Director</h5>";
+                              proyectos+="<p id= 'descripcion'>"+datos.Nf[i].c[2].v+"</p>";
+                              proyectos+="<h5>Participantes</h5>";
+                              proyectos+="<p id= 'descripcion'>"+datos.Nf[i].c[3].v+"</p>";
+                              proyectos+="<h5>Periodo</h5>";
+                              proyectos+="<p id= 'descripcion'>"+datos.Nf[i].c[4].v+"</p>";
+                              proyectos+="<h5>Tipo</h5>";
+                              proyectos+="<p id= 'descripcion'>"+datos.Nf[i].c[5].v+"</p>";
+                              proyectos+="<h5>Cobertura</h5>";
+                              proyectos+="<p id= 'descripcion'>"+datos.Nf[i].c[6].v+"</p>";
+                               proyectos+="<div id='inf'>";
+                               proyectos+="<h6>Presupuesto</h6>";
+                               proyectos+="<p id= 'descripcion'>"+datos.Nf[i].c[7].v+"</p>";
+                               proyectos+="</div>";
+                                proyectos+="<div id='inf'>"; 
+                               proyectos+="<h6>Financiamiento Externo</h6>";
+                               proyectos+="<p id= 'descripcion'>"+datos.Nf[i].c[8].v+"</p>";
+                              proyectos+="</div>";
+                              proyectos+="</div>";
+
+                           }
+                           
+                          
+                                        $(proyectos).appendTo('#informacion_proyecto_uno');
+                                        $('html,body').animate({
+                        scrollTop: $("div#informacion_proyecto_uno").offset().top},
+                        'slow')
+                                    });
+                                     document.getElementById('informacion_proyecto_uno').innerHTML='';
+
+
+                                }
+
+                                
+                                
+                              
+                        
+
+        </script>
     </header>
     <!-- End Header -->
 
@@ -328,8 +390,12 @@
             <div class="col-md-7">
               <!-- Classic Heading -->
 
-              <div id="informacion_proyectos">
+              <div id="informacion_proyectos" >
               
+              </div>
+
+              <div id="informacion_proyecto_uno">
+
               </div>
 
               
@@ -537,8 +603,6 @@
 
 Post Free Ad
   <script type="text/javascript" src="js/script.js"></script>
-
-
 
 
 </html>

@@ -6,7 +6,7 @@
 <head>
 
   <!-- Basic -->
-  <title>Consys|Sobre Nosotros</title>
+  <title>Consys|Docencia</title>
 
   <!-- Define Charset -->
   <meta charset="utf-8">
@@ -62,20 +62,19 @@
   <script type="text/javascript" src="js/mediaelement-and-player.js"></script>
   <script type="text/javascript" src="js/jquery.slicknav.js"></script> 
   <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-  <script >
-    $(document).ready( function () {
-    $('#tabla').DataTable();
-    } );
-  </script>   
+  <script type="text/javascript" src='https://www.google.com/jsapi'></script>
+
+
+   
+  
  
   <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
  
 
-</style>
 </head>
 
-<body>
+<body onload="getDataGad();">
 
   <!-- Full Body Container -->
   <div id="container">
@@ -166,27 +165,27 @@
                   </li>
                   <li><a href="#">Integrantes del grupo</a>
                   </li>
-                  <li><a href="right-sidebar.html">Premios y Reconocimientos</a>
+                  <li><a href="#">Premios y Reconocimientos</a>
                   </li>
-                  <li><a href="left-sidebar.html">Alianzas Estratégicas</a>
+                  <li><a href="#">Alianzas Estratégicas</a>
                   </li>
                 </ul>
               </li>
               <li>
                 <a href="#">Investigación</a>
                 <ul class="dropdown">
-                  <li><a href="tabs.html">Proyectos de Investigación</a>
+                  <li><a href="proyectos_investigacion.html">Proyectos de Investigación</a>
                   </li>
                   <li><a href="publicaciones_cientificas.html">Publicaciones Cientificas</a>
                   </li>
-                  <li><a href="forms.html">Patentes</a>
+                  <li><a href="patentes.html">Patentes</a>
                   </li>
-                  <li><a href="action-box.html">Charlas Científicas</a>
+                  <li><a href="#">Charlas Científicas</a>
                   </li>
                 </ul>
               </li>
               <li>
-                <a class="active" href="#">Docencia</a>
+                <a class="active" href="#"">Docencia</a>
                 <ul class="dropdown">
                   <li><a href="docencia_asig.html">Asignaturas Impartidas</a>
                   </li>
@@ -201,13 +200,13 @@
               <li>
                 <a href="#">Servicios</a>
                 <ul class="dropdown">
-                  <li><a href="services.html">Servicios</a>
+                  <li><a href="servicios.html">Servicios</a>
                   </li>
-                  <li><a href="blog-left-sidebar.html">Colaboraciones</a>
+                  <li><a href="colaboraciones.html">Colaboraciones</a>
                   </li>
                 </ul>
               </li>
-              <li><a href="contact.html">Contacto</a>
+              <li><a href="#">Contacto</a>
               </li>
             </ul>
             <!-- End Navigation List -->
@@ -235,11 +234,11 @@
           <li>
             <a href="#">Investigación</a>
             <ul class="dropdown">
-              <li><a href="tabs.html">Proyectos de Investigación</a>
+              <li><a href="proyectos_investigacion.html">Proyectos de Investigación</a>
               </li>
               <li><a href="buttons.html">Publicaciones Científicas</a>
               </li>
-              <li><a href="forms.html">Patentes</a>
+              <li><a href="patentes.html">Patentes</a>
               </li>
               <li><a href="action-box.html">Charlas Científicas</a>
               </li>
@@ -261,9 +260,9 @@
           <li>
             <a href="blog.html">Servicios</a>
             <ul class="dropdown">
-              <li><a href="blog.html">Serviciosr</a>
+              <li><a href="servicios.html">Serviciosr</a>
               </li>
-              <li><a href="blog-left-sidebar.html">Colaboraciones</a>
+              <li><a href="colaboraciones.html">Colaboraciones</a>
               </li>
             </ul>
           </li>
@@ -275,7 +274,58 @@
 
       </div>
       <!-- End Header Logo & Naviagtion -->
+  <script >
 
+            google.load('visualization', '1', {'packages': ['controls', 'corechart']});
+                                var dataSource = "https://docs.google.com/spreadsheets/d/1R7s-Ce0gPsQQZ_v2G9X8WZH18H0NWeYgIbx_gZqY_HA/edit#gid=0";
+           function getDataGad() {
+                           var query = new google.visualization.Query(dataSource);
+                            var sentencia = "SELECT A,B,C,D,E,F";
+
+                                    query.setQuery(sentencia);
+                                    query.send(function (response) {
+                                        if (response.isError()) {
+                                            alert("Error consultando el archivo: " + response.getMessage());
+                                            return;
+                                        }
+
+                                        var datos = response.getDataTable();
+                                        resulthead='';
+                                        resulthead+="<tr>";
+                                        for (var i = 0; i < datos.Mf.length; i++) {
+                                          resulthead+="<th>"+datos.Nf[0].c[i].v+"</th>";
+                                          }
+                                          resulthead+="</tr>";
+                                        result='';
+                                        console.log(datos);
+
+
+                                        for (var j = 1; j < datos.Nf.length; j++) {
+                                            result+="<tr role='row' class='odd'>";
+                                         result+="<td><img src='"+datos.Nf[i].c[0].v+ "'class='imagen_tabla'></td>";
+                                        result+="<td id='titulo'>"+datos.Nf[j].c[1].v+"</td>";
+                                        result+="<td id='autores'>"+datos.Nf[j].c[2].v+"</td>";
+                                        result+="<td id='director'>"+datos.Nf[j].c[3].v+"</td>";
+                                        result+="<td id='grado'>"+datos.Nf[j].c[4].v+"</td>";
+                                        result+="<td id='link'><a href='"+datos.Nf[j].c[5].v+"'id='icon-pdf'><img src='images/icons/pdf.png'></a>"+"</td>";
+
+                                        
+
+                                         //for(var j=0;j<datos.Mf.length;j++){
+
+                                          console.log(datos.Nf[j].c[0].v);
+                                           // }
+                                             
+                                             // console.log(datos.Nf[i].c[k].v);
+
+                                          result+="</tr>";
+                                        }
+                  
+                                       $(resulthead).appendTo('#thead');
+                                        $(result).appendTo('#tbody');
+                                    });
+                                }
+        </script>  
     </header>
     <!-- End Header -->
 
@@ -290,153 +340,124 @@
       <div class="container">
         <div class="page-content">
 
-              <h4 class="classic-title"><span>Docencia</span></h4>
+              <h1 class="classic-title"><strong>Trabajos de Grado y Posgrado</strong></h1>
+              <hr class="separador">
 
 
 
             <div class="col-md-7">
               <!-- Classic Heading -->
-              <h4>Trabajos de Grado y Posgrado</h4>
+                <div id="tabla">
+                  
+
+                </div>
+
+               <table  id="tabla" class="display">
+                  <thead id="thead">
+                    
+                     </thead>
+
+                     <tbody id="tbody">
+                       
+                     </tbody>
+                     </table>
+                   <!-- 
+                    <tr>
+                      <th>Imagen Representativa</th>
+                      <th>Codigo</th>
+                      <th>Asignatura + link</th>
+                      <th>Carrera</th>
+                      <th>Docente</th>
+
+                    </tr>
+                 
+
+                  
+
+               
+               -->
+
+
+               
               <!-- Some Text -->
 
-              <table id="tabla" class="display">
+             <!-- <table id="tabla" class="display">
           <thead>
             <tr>
-              <th>Grafico representativo</th>
-              <th>Titulo</th>
-              <th>Autores</th>
-              <th>Director</th>
-              <th>Grado</th>
-              <th>Link Dspace</th>
+              <th>Imagen representativa</th>
+              <th>Código</th>
+              <th>Imagen representativa Código  Asignatura + link Carrera Docente</th>
+              <th>Carrera</th>
+              <th>Docente</th>
               </tr>
             </thead>
             
 
            <tbody>
             <tr>
-              <td><img src="images\patterns\1.png" class="imagen_tabla"></td>
+              <td class="ancho"><img src="images\patterns\1.png" class="imagen_tabla"></td>
               <td>EET_121</td>
-              <td>Autore</td>
+              <td><a href="">Teoría de Control Automático</a></td>
               <td>Electrónica y Telecomunicaciones</td>
               <td>Carlos Calderón Córdova</td>
-              <td><a href="">Teoría de Control Automático</a></td>
             </tr>
             <tr>
-              <td  class="ancho"><img src="images\patterns\1.png" class="imagen_tabla"></td>
-              <td>EET_121</td>
-              <td>Autore</td>
-              <td>Electrónica y Telecomunicaciones</td>
-              <td>Carlos Calderón Córdova</td>
-              <td><a href="">Teoría de Control Automático</a></td>
-            </tr>
-            <tr>
+              
+
+
+
+
               <td><img src="images\patterns\1.png" class="imagen_tabla"></td>
               <td>EET_121</td>
-              <td>Autore</td>
+              <td><a href="">Teoría de Control Automático</a></td>
               <td>Electrónica y Telecomunicaciones</td>
               <td>Carlos Calderón Córdova</td>
-              <td><a href="">Teoría de Control Automático</a></td>
             </tr>
             <tr>
               <td><img src="images\patterns\1.png" class="imagen_tabla"></td>
               <td>EET_121</td>
-              <td>Autore</td>
+              <td><a href="">Teoría de Control Automático</a></td>
               <td>Electrónica y Telecomunicaciones</td>
               <td>Carlos Calderón Córdova</td>
-              <td><a href="">Teoría de Control Automático</a></td>
             </tr>
             <tr>
               <td><img src="images\patterns\1.png" class="imagen_tabla"></td>
               <td>EET_121</td>
-              <td>Autore</td>
+              <td><a href="">Teoría de Control Automático</a></td>
               <td>Electrónica y Telecomunicaciones</td>
               <td>Carlos Calderón Córdova</td>
-              <td><a href="">Teoría de Control Automático</a></td>
             </tr>
             <tr>
               <td><img src="images\patterns\1.png" class="imagen_tabla"></td>
               <td>EET_121</td>
-              <td>Autore</td>
-              <td>Electrónica y Telecomunicaciones</td>
-              <td>Carlos Calderón Córdova</td>
               <td><a href="">Teoría de Control Automático</a></td>
+              <td>Electrónica y Telecomunicaciones</td>
+              <td>Rober Calderón Córdova</td>
             </tr>
             <tr>
               <td><img src="images\patterns\1.png" class="imagen_tabla"></td>
               <td>EET_121</td>
-              <td>Autore</td>
+              <td><a href="">Teoría de Control Automático</a></td>
               <td>Electrónica y Telecomunicaciones</td>
               <td>Carlos Calderón Córdova</td>
-              <td><a href="">Teoría de Control Automático</a></td>
             </tr>
             <tr>
               <td><img src="images\patterns\1.png" class="imagen_tabla"></td>
               <td>EET_121</td>
-              <td>Autore</td>
+              <td><a href="">Teoría de Control Automático</a></td>
               <td>Electrónica y Telecomunicaciones</td>
               <td>Carlos Calderón Córdova</td>
-              <td><a href="">Teoría de Control Automático</a></td>
             </tr>
             <tr>
               <td><img src="images\patterns\1.png" class="imagen_tabla"></td>
               <td>EET_121</td>
-              <td>Autore</td>
-              <td>Electrónica y Telecomunicaciones</td>
-              <td>Carlos Calderón Córdova</td>
               <td><a href="">Teoría de Control Automático</a></td>
-            </tr>
-            <tr>
-              <td><img src="images\patterns\1.png" class="imagen_tabla"></td>
-              <td>EET_121</td>
-              <td>Autore</td>
               <td>Electrónica y Telecomunicaciones</td>
-              <td>Carlos Calderón Córdova</td>
-              <td><a href="">Teoría de Control Automático</a></td>
+              <td>Rober Calderón Córdova</td>
             </tr>
-            <tr>
-              <td><img src="images\patterns\1.png" class="imagen_tabla"></td>
-              <td>EET_121</td>
-              <td>Autore</td>
-              <td>Electrónica y Telecomunicaciones</td>
-              <td>Carlos Calderón Córdova</td>
-              <td><a href="">Teoría de Control Automático</a></td>
-            </tr>
-            <tr>
-              <td><img src="images\patterns\1.png" class="imagen_tabla"></td>
-              <td>EET_121</td>
-              <td>Autore</td>
-              <td>Electrónica y Telecomunicaciones</td>
-              <td>Carlos Calderón Córdova</td>
-              <td><a href="">Teoría de Control Automático</a></td>
-            </tr>
-            <tr>
-              <td><img src="images\patterns\1.png" class="imagen_tabla"></td>
-              <td>EET_121</td>
-              <td>Autore</td>
-              <td>Electrónica y Telecomunicaciones</td>
-              <td>Carlos Calderón Córdova</td>
-              <td><a href="">Teoría de Control Automático</a></td>
-            </tr>
-            <tr>
-              <td><img src="images\patterns\1.png" class="imagen_tabla"></td>
-              <td>EET_121</td>
-              <td>Autore</td>
-              <td>Electrónica y Telecomunicaciones</td>
-              <td>Carlos Calderón Córdova</td>
-              <td><a href="">Teoría de Control Automático</a></td>
-            </tr>
-            <tr>
-              <td><img src="images\patterns\1.png" class="imagen_tabla"></td>
-              <td>EET_121</td>
-              <td>Autore</td>
-              <td>Electrónica y Telecomunicaciones</td>
-              <td>Carlos Calderón Córdova</td>
-              <td><a href="">Teoría de Control Automático</a></td>
-            </tr>
-            
             </tbody>
 
-      </table>
+      </table>-->
 
    
               
@@ -456,7 +477,7 @@
 
       
     <!-- End content -->
-
+</body>
 
     <!-- Start Footer -->
     <footer>
@@ -643,6 +664,7 @@
 Post Free Ad
   <script type="text/javascript" src="js/script.js"></script>
 
-</body>
+
+
 
 </html>

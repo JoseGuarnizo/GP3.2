@@ -199,7 +199,7 @@
               <li>
                 <a href="#">Servicios</a>
                 <ul class="dropdown">
-                  <li><a href="services.html">Servicios</a>
+                  <li><a href="servicios.html">Servicios</a>
                   </li>
                   <li><a href="colaboraciones.html">Colaboraciones</a>
                   </li>
@@ -279,7 +279,7 @@
                                 var dataSource = "https://docs.google.com/spreadsheets/d/1oWPhqce15zcoX1rjr0LNeKi5cEfXBBHnpkr08Tyb2YE/edit#gid=0";
            function getDataGad() {
                            var query = new google.visualization.Query(dataSource);
-                            var sentencia = "SELECT A,B,C,D,E,F,G";
+                            var sentencia = "SELECT A,B,C,D,E,F,G,H";
 
                                     query.setQuery(sentencia);
                                     query.send(function (response) {
@@ -291,19 +291,20 @@
                               var datos = response.getDataTable();
                              publicaciones='';
                             console.log(datos);
+                           
                              for (var i = 0; i < datos.Nf.length; i++) {
                               publicaciones+="<div id='infor-general'>";
                              publicaciones+="<div id='imagen_de_cientifica'>";
-                             publicaciones+="<img src='"+datos.Nf[i].c[5].v+ "'class='imagen_cientificas'>";
+                             publicaciones+="<img src='"+datos.Nf[i].c[6].v+ "'class='imagen_cientificas'>";
                               publicaciones+="</div >";
                               publicaciones+="<div id='infor_cientifica'>";
                               publicaciones+="<h1 id='anio'>"+datos.Nf[i].c[0].v+"</h1>";
 
                               publicaciones+="<h1><a href='"+datos.Nf[i].c[3].v+"'</a>"+datos.Nf[i].c[1].v+".   "+datos.Nf[i].c[2].v+"</h1>";
                                publicaciones+= "<h5>"+datos.Nf[i].c[4].v+"</h5>";
-
+                              publicaciones+="<h6>"+datos.Nf[i].c[5].v+"</h6>";
                               publicaciones+="</div>";
-                              publicaciones+="<a href='"+datos.Nf[i].c[6].v+"'id='icon-pdf'><img src='images/icons/pdf.png'>'</a>";
+                              publicaciones+="<a href='"+datos.Nf[i].c[7].v+"'id='icon-pdf'><img src='images/icons/pdf.png'></a>";
                               publicaciones+="</div>";
                               
                                         }
